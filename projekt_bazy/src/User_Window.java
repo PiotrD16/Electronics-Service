@@ -1,9 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 public class User_Window extends JFrame implements ActionListener
 {
@@ -191,6 +193,26 @@ public class User_Window extends JFrame implements ActionListener
         order_history_labels = new String[]{"Imię i nazwisko", "Urządzenie", "Inżynier", "Koszt", "Data odbioru"};
         loadOrderHistoryTable();
         this.setVisible(true);
+        selectedImageFile = generateBlackImageFile();
+    }
+
+    private File generateBlackImageFile() {
+        try {
+            int width = 150;
+            int height = 100;
+            BufferedImage blackImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = blackImage.createGraphics();
+            g2d.setColor(Color.BLACK);
+            g2d.fillRect(0, 0, width, height);
+            g2d.dispose();
+
+            File outputFile = new File("black_default.png");
+            ImageIO.write(blackImage, "png", outputFile);
+            return outputFile;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private void loadOrderHistoryTable() {
