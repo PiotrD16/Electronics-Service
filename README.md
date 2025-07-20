@@ -10,3 +10,5 @@ Employee capabilities to update order details such as price, status, and pickup 
 A graphical user interface built with Java Swing for easy interaction.
 
 This combination of SQL and NoSQL databases ensures efficient data management and flexibility in storing multimedia repair data.
+
+The Main file is located at: projekt_bazy/src/Main.java.
